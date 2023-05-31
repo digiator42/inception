@@ -1,0 +1,11 @@
+docker ps -a //display all process (images / containers)
+docker stop $(docker ps -aq)
+
+# docker container prune   # Remove all stopped containers
+# docker volume prune      # Remove all unused volumes
+# docker image prune       # Remove unused images
+# docker system prune      # All of the above, in this order: containers, volumes, images
+
+
+docker run name /run and excecute the app
+docker run -it name //it interactive mode, run in terminal
