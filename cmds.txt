@@ -7,5 +7,17 @@ docker stop $(docker ps -aq)
 # docker system prune      # All of the above, in this order: containers, volumes, images
 
 
-docker run name /run and excecute the app
+docker run name //run and excecute the app
 docker run -it name //it interactive mode, run in terminal
+
+docker build inception . //build image name(inception) .(path to Dockerfile)
+
+docker run -it name sh //sh means run shell, alternativly can be bash
+
+
+/*
+FROM //base image
+
+*/
+
+ADD //insted od COPY cmd, we can add url file to container//
