@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <script>
+            document.body.onload = 
+                    function myFunction(){
+                        let div = document.createElement('div');
+                        div.style.cssText = "flex-flow:row wrap; display: flex; margin: 3% auto; width:864px;";
+
+                        let h1 = document.createElement('h1');
+                        let h2 = document.createElement('h2');
+                        h1.innerHTML = "Number Generator";
+                        h2.innerHTML = "30DaysOfJavaScript:DOM Day 2"
+
+                        h1.style.cssText = `text-align : center;
+                                            font: bolder 30px Arial, sans-serif`;
+                        h2.style.cssText = `text-align : center;
+                                            font: bolder 15px Arial, sans-serif;
+                                            margin : -10px;
+                                            text-decoration: underline;`
+                                            
+
+                        let style = `padding : 10px 35px;
+                                    color : white;
+                                    width : 70px;
+                                    font: bolder 30px Arial, sans-serif;
+                                    border : 1px;
+                                    margin : 2px 2px;
+                                    text-align : center`;
+
+                        function isPrime(num) {
+                            for(let i = 2, s = Math.sqrt(num); i <= s; i++)
+                                if(num % i === 0) 
+                                    return 0; 
+                            return num > 1;
+                        }
+
+                        for (let i = 0; i <= 101; i++) {
+                            let span = document.createElement('span');
+                            span.innerHTML = i;  
+
+                            if(i % 2 === 0){             
+                                span.style.cssText = `background-color : green;
+                                                    ${style}`;
+                            }
+                            else if(isPrime(i))
+                            {       
+                                span.style.cssText = `background-color : red;
+                                                    ${style}`;
+                            }
+                            else
+                                span.style.cssText = `background-color : #edc207cc;
+                                                    ${style}`;
+
+                            
+                            document.body.appendChild(h1);
+                            document.body.appendChild(h2);
+                            document.body.appendChild(div);
+                            div.appendChild(span);
+                            console.log(span);                                
+                        }
+                    }      
+        
+    </script>
+</body>
+</html>
