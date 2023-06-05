@@ -19,5 +19,11 @@ docker run -it name sh //sh means run shell, alternativly can be bash
 FROM //base image
 
 */
+docker run --publish 8080:8080 image // run a basic container
 
 ADD //insted od COPY cmd, we can add url file to container//
+
+curl --request POST \
+  --url http://localhost:8080/ \
+  --header 'content-type: application/json' \
+  --data '{"msg": "testing"}'

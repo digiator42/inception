@@ -1,3 +1,4 @@
 wordpress
 mariadb
 docker-compose.yml
+traces.txt
