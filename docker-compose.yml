@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx 
+    ports:
+      - 443:443
+    networks:
+      - my-network
+    volumes:
+      - wordpress_data:/var/www/html/wordpress  
+    restart: on-failure  
+
+networks:
+  my-network:
+
+volumes:
+  wordpress_data:
+    driver_opts:
+      o: bind
+      type: none
+      device: ~/wordpress
