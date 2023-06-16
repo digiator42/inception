@@ -1,6 +1,4 @@
-wordpress
 mariadb
 traces.txt
 Makefile
 .DS_Store
-.env

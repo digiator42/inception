@@ -1,11 +1,23 @@
 version: '3'
 
 services:
+  wordpress:
+    build:
+      context: ./wordpress
+      dockerfile: Dockerfile
+    volumes:
+      - wordpress-files:/var/www/html
+    restart: on-failure  
+    networks:
+      - my-network
+  
   nginx:
     build:
       context: ./nginx
       dockerfile: Dockerfile
     container_name: nginx 
+    depends_on :
+      - wordpress
     ports:
       - 443:443
     networks:
@@ -22,4 +34,10 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: ~/wordpress
+      device: $PWD/data/wordpress
+  wordpress-files:
+  db_data: 
+    driver_opts:
+      o: bind
+      type: none
+      device: $PWD/data/mariadb
