@@ -2,3 +2,6 @@ wordpress
 mariadb
 docker-compose.yml
 traces.txt
+Makefile
+.DS_Store
+.env
