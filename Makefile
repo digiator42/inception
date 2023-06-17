@@ -1,4 +1,4 @@
-name = inception
+
 all:
 	@docker-compose -f ./srcs/docker-compose.yml up -d
 
@@ -18,22 +18,15 @@ clean: down
 
 
 fclean:
-	@docker stop $$(docker ps -aq)
+	@if [ ! -z "$$(docker ps -aq)" ]; then \
+		docker stop $$(docker ps -aq); \
+	fi
 	@docker system prune --all --force --volumes
-	@docker network prune --force
-	@docker volume prune --force
-	@docker volume rm srcs_db-volume  --force
-	@docker volume rm srcs_wp-volume  --force
-	rm -rf ${PWD}/srcs/mount-data/wordpress/*
-	rm -rf ${PWD}/srcs/mount-data/mariadb/*
+	@if [ ! -z "$$(docker volume ls -q)" ]; then \
+		docker volume rm $$(docker volume ls -q); \
+	fi
+	@sudo rm -rf /home/${USER}/data/wordpress/*
+	@sudo rm -rf /home/${USER}/data/mariadb/*
 	
-ffclean:
-	@docker system prune --all --force --volumes
-	@docker network prune --force
-	@docker volume prune  --force
-	@docker volume rm srcs_db-volume  --force
-	@docker volume rm srcs_wp-volume  --force
-	rm -rf ${PWD}/srcs/mount-data/wordpress/*
-	rm -rf ${PWD}/srcs/mount-data/mariadb/*
 
 .PHONY	: all build down re clean fclean
