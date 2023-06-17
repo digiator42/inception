@@ -31,7 +31,7 @@ services:
     volumes:
       - db-volume:/var/lib/mysql
     env_file:
-      - .env  
+      - .env
     restart: on-failure
 
   wordpress:
