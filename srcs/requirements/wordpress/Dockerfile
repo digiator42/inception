@@ -1,8 +1,6 @@
 FROM alpine:3.16
 
-ARG DB_NAME \
-    DB_USER \
-    DB_PASS
+ARG DB_NAME DB_USER DB_PASS
 
 RUN apk update && apk upgrade && apk add --no-cache \
     php8 php8-fpm php8-mysqli php8-json php8-curl php8-dom \

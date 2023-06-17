@@ -32,6 +32,8 @@ services:
       - inception
     volumes:
       - db-volume:/var/lib/mysql
+    env_file:
+      - .env  
     restart: on-failure
 
   wordpress:
@@ -49,6 +51,8 @@ services:
       - inception
     volumes:
       - wp-volume:/var/www/
+    env_file:
+      - .env  
     restart: on-failure
 
 volumes:
