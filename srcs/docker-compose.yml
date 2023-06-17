@@ -56,13 +56,13 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: $PWD/srcs/wordpress
+      device: $PWD/srcs/mount-data/wordpress
 
   db-volume:
     driver_opts:
       o: bind
       type: none
-      device: $PWD/srcs/mariadb
+      device: $PWD/srcs/mount-data/mariadb
 
 networks:
     inception:
