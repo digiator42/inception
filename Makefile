@@ -13,8 +13,8 @@ re:
 
 clean: down
 	@docker system prune -a
-	@sudo rm -rf ~/data/wordpress/*
-	@sudo rm -rf ~/data/mariadb/*
+	# @sudo rm -rf ~/data/wordpress/*
+	# @sudo rm -rf ~/data/mariadb/*
 
 
 fclean:
