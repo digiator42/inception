@@ -8,13 +8,15 @@ build:
 down:
 	@docker-compose -f ./srcs/docker-compose.yml down
 
-re:
-	@docker-compose -f ./srcs/docker-compose.yml up -d --build
+up:
+	@docker-compose -f ./srcs/docker-compose.yml up -d
+
+re: fclean all
 
 clean: down
 	@docker system prune -a
-	# @sudo rm -rf ~/data/wordpress/*
-	# @sudo rm -rf ~/data/mariadb/*
+	@sudo rm -rf /home/${USER}/data/wordpress/*
+	@sudo rm -rf /home/${USER}/data/mariadb/*
 
 
 fclean:
