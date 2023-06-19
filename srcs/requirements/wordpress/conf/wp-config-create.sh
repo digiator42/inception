@@ -1,7 +1,4 @@
 #!bin/sh
-wget https://wordpress.org/latest.zip && \
-    unzip latest.zip && cp -rf wordpress/* . && \
-    rm -rf wordpress latest.zip;
     
 if [ ! -f "/var/www/wp-config.php" ]; then
 cat << EOF > /var/www/wp-config.php
