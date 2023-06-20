@@ -17,7 +17,8 @@ clean: down
 	@docker system prune -a
 	@sudo rm -rf /home/${USER}/data/wordpress/*
 	@sudo rm -rf /home/${USER}/data/mariadb/*
-	@sudo rm -rf /home/${USER}/data/mariadb/./sh*
+	@sudo rm -rf /home/${USER}/data/mariadb/.ash*
+	@sudo rm -rf /home/${USER}/data/mariadb/.mysql_history*
 
 
 fclean:
@@ -30,7 +31,8 @@ fclean:
 	fi
 	@sudo rm -rf /home/${USER}/data/wordpress/*
 	@sudo rm -rf /home/${USER}/data/mariadb/*
-	@sudo rm -rf /home/${USER}/data/mariadb/./sh*
+	@sudo rm -rf /home/${USER}/data/mariadb/.ash*
+	@sudo rm -rf /home/${USER}/data/mariadb/.mysql_history*
 	
 
 .PHONY	: all build down re clean fclean
