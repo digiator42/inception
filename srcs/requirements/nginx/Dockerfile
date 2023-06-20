@@ -1,11 +1,13 @@
 FROM alpine:3.16
 
-RUN	apk update && apk upgrade && apk add --no-cache nginx openssl; \
-	mkdir -p /etc/nginx/ssl/; \
-	openssl req -x509 -newkey rsa:4096 -keyout /etc/nginx/ssl/ngnix.key \
-	-out /etc/nginx/ssl/ngnix.crt -sha256 -days 3650 -nodes \
-	-subj "/C=XX/ST=ahassan/L=AD/O=42/OU=N\A/CN=ahassan"
+ARG SSL_CERTIFICATE SSL_CERTIFICATE_KEY
 
-COPY /conf/nginx.conf /etc/nginx/http.d/ 
+RUN	apk update && apk upgrade && apk add --no-cache nginx openssl;
+
+COPY /conf/nginx.conf /etc/nginx/http.d/
+COPY /tools/certs.sh .
+
+RUN chmod 777 certs.sh && sh certs.sh && rm certs.sh
+
 EXPOSE 443
 CMD ["nginx", "-g", "daemon off;"]

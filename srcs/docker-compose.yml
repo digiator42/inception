@@ -5,6 +5,9 @@ services:
     build:
       context: requirements/nginx/
       dockerfile: Dockerfile
+      args:
+          SSL_CERTIFICATE: ${SSL_CERTIFICATE}
+          SSL_CERTIFICATE_KEY: ${SSL_CERTIFICATE_KEY}
     container_name: nginx
     depends_on:
       - wordpress
@@ -14,6 +17,8 @@ services:
       - inception
     volumes:
       - wp-volume:/var/www/
+    env_file:
+      - .env
     restart: on-failure
 
   mariadb:
