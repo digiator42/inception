@@ -1,6 +1,6 @@
 FROM alpine:3.16
 
-ARG SSL_CERTIFICATE SSL_CERTIFICATE_KEY
+ARG SSL_CERTIFICATE SSL_CERTIFICATE_KEY DOMAIN WDOMAIN
 
 RUN	apk update && apk upgrade && apk add --no-cache nginx openssl;
 

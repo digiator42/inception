@@ -8,6 +8,8 @@ services:
       args:
           SSL_CERTIFICATE: ${SSL_CERTIFICATE}
           SSL_CERTIFICATE_KEY: ${SSL_CERTIFICATE_KEY}
+          DOMAIN: ${DOMAIN}
+          WDOMAIN: ${WDOMAIN}
     container_name: nginx
     depends_on:
       - wordpress
