@@ -1,8 +1,14 @@
 
 all:
+	@if [ ! -d /home/${USER}/data ]; then \
+		mkdir -p /home/${USER}/data/wordpress  /home/${USER}/data/mariadb; \
+	fi
 	@docker-compose -f ./srcs/docker-compose.yml up -d
 
 build:
+	@if [ ! -d /home/${USER}/data ]; then \
+		mkdir -p /home/${USER}/data/wordpress  /home/${USER}/data/mariadb; \
+	fi
 	@docker-compose -f ./srcs/docker-compose.yml up -d --build
 
 down:
