@@ -10,6 +10,8 @@ services:
           SSL_CERTIFICATE_KEY: ${SSL_CERTIFICATE_KEY}
           DOMAIN: ${DOMAIN}
           WDOMAIN: ${WDOMAIN}
+          ROOT: ${ROOT}
+          SSLPORT : ${SSLPORT}
     container_name: nginx
     depends_on:
       - wordpress
@@ -18,7 +20,7 @@ services:
     networks:
       - inception
     volumes:
-      - wp-volume:/var/www/
+      - wp-volume:${ROOT}
     env_file:
       - .env
     restart: on-failure
@@ -32,11 +34,14 @@ services:
         DB_USER: ${DB_USER}
         DB_PASS: ${DB_PASS}
         DB_ROOT: ${DB_ROOT}
+        DBPORT : ${DBPORT}
+        ROOT: ${ROOT}
+        DBVOLUME : ${DBVOLUME}
     container_name: mariadb
     networks:
       - inception
     volumes:
-      - db-volume:/var/lib/mysql
+      - db-volume:${DBVOLUME}
     env_file:
       - .env
     restart: on-failure
@@ -49,13 +54,18 @@ services:
         DB_NAME: ${DB_NAME}
         DB_USER: ${DB_USER}
         DB_PASS: ${DB_PASS}
+        WPORT : ${WPORT}
+        ROOT: ${ROOT}
+        PHPUSER : ${PHPUSER}
+        AUTHOR_EMAIL : ${AUTHOR_EMAIL}
+        ADMIN_EMAIL : ${ADMIN_EMAIL}
     container_name: wordpress
     depends_on:
       - mariadb
     networks:
       - inception
     volumes:
-      - wp-volume:/var/www/
+      - wp-volume:${ROOT}
     env_file:
       - .env  
     restart: on-failure

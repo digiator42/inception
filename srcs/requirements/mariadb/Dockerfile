@@ -1,6 +1,6 @@
 FROM alpine:3.16
 
-ARG DB_NAME DB_USER DB_PASS
+ARG DB_NAME DB_USER DB_PASS DBPORT
 
 COPY conf/create_db.sh .
 
@@ -14,6 +14,6 @@ RUN apk update && apk add --no-cache mariadb mariadb-client; \
     mysql_install_db --user=mysql --datadir=/var/lib/mysql; \
     sh create_db.sh;
 
-EXPOSE 3306
+EXPOSE ${DBPORT}
 USER mysql
 CMD ["/usr/bin/mysqld", "--skip-log-error"]
