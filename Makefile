@@ -21,10 +21,7 @@ re: fclean all
 
 clean: down
 	@docker system prune -a
-	@sudo rm -rf /home/${USER}/data/wordpress/*
-	@sudo rm -rf /home/${USER}/data/mariadb/*
-	@sudo rm -rf /home/${USER}/data/mariadb/.ash*
-	@sudo rm -rf /home/${USER}/data/mariadb/.mysql_history*
+	@sudo rm -rf /home/${USER}/data
 
 
 fclean:
@@ -35,10 +32,7 @@ fclean:
 	@if [ ! -z "$$(docker volume ls -q)" ]; then \
 		docker volume rm $$(docker volume ls -q); \
 	fi
-	@sudo rm -rf /home/${USER}/data/wordpress/*
-	@sudo rm -rf /home/${USER}/data/mariadb/*
-	@sudo rm -rf /home/${USER}/data/mariadb/.ash*
-	@sudo rm -rf /home/${USER}/data/mariadb/.mysql_history*
+	@sudo rm -rf /home/${USER}/data
 	
 
 .PHONY	: all build down re clean fclean
