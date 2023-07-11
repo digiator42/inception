@@ -5,4 +5,4 @@ wp --allow-root --path=/var/www core install --url="ahassan.42.fr" \
 
 wp user create $WP_NAME "${AUTHOR_EMAIL}" --role=author --user_pass=$WP_PASS 
 
-/usr/sbin/php-fpm8 -F
+/usr/sbin/php-fpm81 -F

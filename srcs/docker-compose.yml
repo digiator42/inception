@@ -16,7 +16,7 @@ services:
     depends_on:
       - wordpress
     ports:
-      - "443:443"
+      - "${SSLPORT}:${SSLPORT}"
     networks:
       - inception
     volumes:

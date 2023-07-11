@@ -1,11 +1,11 @@
-FROM alpine:3.16
+FROM alpine:3.17
 
 ARG DB_NAME DB_USER DB_PASS WP_NAME WP_USER WP_PASS WPORT PHPUSER ROOT AUTHOR_EMAIL ADMIN_EMAIL
 
 RUN apk update && apk upgrade && apk add --no-cache \
-    php8 php8-fpm php8-mysqli php8-json php8-curl php8-dom php8-exif \
-    php8-fileinfo php8-mbstring php8-openssl php8-xml php8-zip wget curl php-phar unzip \
-    rm -f /var/cache/apk/*; rm /etc/php8/php-fpm.d/www.conf; mkdir -p ${ROOT}
+    php81 php81-fpm php81-mysqli php81-json php81-curl php81-dom php81-exif \
+    php81-fileinfo php81-mbstring php81-openssl php81-xml php81-zip wget curl php-phar unzip \
+    rm -f /var/cache/apk/*; rm /etc/php81/php-fpm.d/www.conf; mkdir -p ${ROOT}
 
 COPY /tools/fpm-conf.sh .
 

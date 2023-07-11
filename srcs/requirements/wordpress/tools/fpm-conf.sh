@@ -1,7 +1,7 @@
 #!bin/sh
     
-if [ ! -f "/etc/php8/php-fpm.d/www.conf" ]; then
-cat << EOF > /etc/php8/php-fpm.d/www.conf
+if [ ! -f "/etc/php81/php-fpm.d/www.conf" ]; then
+cat << EOF > /etc/php81/php-fpm.d/www.conf
 [www]
 user = $PHPUSER
 group = $PHPUSER
